@@ -3,7 +3,7 @@ import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
 
 const app = express()
-
+app.use(express.static('public'))
 
 app.get('/api/bug/save', (req, res) => {
     const { id: _id, title, description, severity, createdAt } = req.query
