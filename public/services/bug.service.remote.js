@@ -42,12 +42,14 @@ function remove(bugId) {
 
 function save(bug) {
     const queryStr = '/save?' +
-    `txt=${bug.txt}&` +
-    `severity=${bug.severity}&` +
-    `id=${bug._id || ''}`
+        `title=${bug.title}&` +
+        `severity=${bug.severity}&` +
+        `createdAt=${bug.createdAt}&` +
+        `description=${bug.description}&` +
+        `id=${bug._id || ''}`
 
-        return axios.get(BASE_URL + queryStr, bug)
-            .then(res => res.data)
+    return axios.get(BASE_URL + queryStr)
+        .then(res => res.data)
 }
 
 function _createBugs() {

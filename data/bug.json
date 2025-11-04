@@ -1,14 +1,16 @@
 [
   {
-    "_id": "a101",
-    "severity": 1,
-    "createdAt": null
+    "_id": "abc123",
+    "title": "Cannot save a new car",
+    "description": "problem when clicking Save",
+    "severity": 2,
+    "createdAt": 1542107359454
   },
   {
-    "_id": "a102",
-    "title": "Error1",
-    "description": "Oops",
-    "severity": 2,
+    "_id": "a101",
+    "title": "Cannot remove car",
+    "description": "problem when clicking Remove",
+    "severity": 1,
     "createdAt": 123
   }
 ]
