@@ -1,10 +1,8 @@
 [
   {
     "_id": "a101",
-    "title": "Cannot save a new bug",
-    "description": "problem when clicking Save",
-    "severity": 3,
-    "createdAt": 1542107359454
+    "severity": 1,
+    "createdAt": null
   },
   {
     "_id": "a102",
@@ -12,12 +10,5 @@
     "description": "Oops",
     "severity": 2,
     "createdAt": 123
-  },
-  {
-    "_id": "a103",
-    "title": "Error2",
-    "description": "oh no!",
-    "severity": 1,
-    "createdAt": 1234
   }
 ]

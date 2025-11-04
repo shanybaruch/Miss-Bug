@@ -32,19 +32,22 @@ function query(filterBy) {
 }
 
 function getById(bugId) {
-    return storageService.get(STORAGE_KEY, bugId)
+    return axios.get(BASE_URL + '/' + bugId)
+        .then(res => res.data)
 }
 
 function remove(bugId) {
-    return storageService.remove(STORAGE_KEY, bugId)
+    return axios.get(BASE_URL + '/' + bugId + '/remove')
 }
 
 function save(bug) {
-    if (bug._id) {
-        return storageService.put(STORAGE_KEY, bug)
-    } else {
-        return storageService.post(STORAGE_KEY, bug)
-    }
+    const queryStr = '/save?' +
+    `txt=${bug.txt}&` +
+    `severity=${bug.severity}&` +
+    `id=${bug._id || ''}`
+
+        return axios.get(BASE_URL + queryStr, bug)
+            .then(res => res.data)
 }
 
 function _createBugs() {
