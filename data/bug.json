@@ -1,16 +1,23 @@
 [
   {
-    "_id": "abc123",
-    "title": "Cannot save a new car",
-    "description": "problem when clicking Save",
+    "_id": "zawUB",
+    "title": "Bug 48",
+    "description": "undefined",
     "severity": 2,
-    "createdAt": 1542107359454
+    "createdAt": null
   },
   {
-    "_id": "a101",
-    "title": "Cannot remove car",
-    "description": "problem when clicking Remove",
+    "_id": "cBz2h",
+    "title": "Bug 17",
+    "description": "undefined",
     "severity": 1,
-    "createdAt": 123
+    "createdAt": null
+  },
+  {
+    "_id": "30Kr6",
+    "title": "Bug 19",
+    "description": "undefined",
+    "severity": 4,
+    "createdAt": null
   }
 ]

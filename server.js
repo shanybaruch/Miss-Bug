@@ -23,6 +23,7 @@ app.get('/api/bug', (req, res) => {
 })
 
 app.get('/api/bug/:bugId', (req, res) => {
+    // console.log('req: ',req);
     const bugId = req.params.bugId
     bugService.getById(bugId)
         .then(bug => res.send(bug))
@@ -32,11 +33,11 @@ app.get('/api/bug/:bugId', (req, res) => {
         })
 })
 
-app.get('/api/bug/:bugId/remove', (req, res) => {
+app.get('/api/bug/:bugId/remove', (req, res) => {    
     const bugId = req.params.bugId
     bugService.remove(bugId)
-        .then(() => res.send(bugs))
-        .catch(err => {
+        .then(bugs => res.send(bugs))
+        .catch(err => {            
             loggerService.error(err)
             res.status(400).send(err)
         })
