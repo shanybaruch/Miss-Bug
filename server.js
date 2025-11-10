@@ -1,9 +1,11 @@
 import express from 'express'
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
+import cookieParser from 'cookie-parser'
 
 const app = express()
 app.use(express.static('public'))
+app.use(cookieParser())
 
 app.get('/api/bug/save', (req, res) => {
     const { id: _id, title, description, severity, createdAt } = req.query
