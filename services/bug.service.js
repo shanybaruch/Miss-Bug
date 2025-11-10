@@ -9,7 +9,8 @@ export const bugService = {
 
 const bugs = readJsonFile('./data/bug.json')
 
-function query() {
+function query(filterBy = {}) {
+    console.log('backend filterby: ', filterBy)
     return Promise.resolve(bugs)
 }
 

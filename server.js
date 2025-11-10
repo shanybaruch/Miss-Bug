@@ -18,7 +18,14 @@ app.get('/api/bug/save', (req, res) => {
 })
 
 app.get('/api/bug', (req, res) => {
-    bugService.query()
+    console.log(req.query)
+const filterBy = {
+		txt: req.query.txt || '',
+		minSeverity: +req.query.minSeverity || 0,
+		paginationOn: req.query.paginationOn === 'true',
+		pageIdx: +req.query.pageIdx || 0,
+	}
+    bugService.query(filterBy)
         .then(bugs => res.send(bugs))
 })
 
@@ -32,11 +39,11 @@ app.get('/api/bug/:bugId', (req, res) => {
         })
 })
 
-app.get('/api/bug/:bugId/remove', (req, res) => {    
+app.get('/api/bug/:bugId/remove', (req, res) => {
     const bugId = req.params.bugId
     bugService.remove(bugId)
         .then(bugs => res.send(bugs))
-        .catch(err => {            
+        .catch(err => {
             loggerService.error(err)
             res.status(400).send(err)
         })
