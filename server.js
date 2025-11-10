@@ -23,7 +23,6 @@ app.get('/api/bug', (req, res) => {
 })
 
 app.get('/api/bug/:bugId', (req, res) => {
-    // console.log('req: ',req);
     const bugId = req.params.bugId
     bugService.getById(bugId)
         .then(bug => res.send(bug))
