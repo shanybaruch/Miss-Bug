@@ -1,7 +1,6 @@
 import { utilService } from './util.service.js'
 
 const BASE_URL = '/api/bug'
-const PAGE_SIZE = 4
 
 _createBugs()
 
@@ -14,25 +13,8 @@ export const bugService = {
 }
 
 function query(filterBy) {
-    return axios.get(BASE_URL)
+    return axios.get(BASE_URL, { params: filterBy })
         .then(res => res.data)
-        .then(bugs => {
-            if (filterBy.txt) {
-                const regExp = new RegExp(filterBy.txt, 'i')
-                bugs = bugs.filter(bug => regExp.test(bug.title))
-            }
-
-            if (filterBy.minSeverity) {
-                bugs = bugs.filter(bug => bug.severity >= filterBy.minSeverity)
-            }
-
-            if (filterBy.paginationOn) {
-                const startIdx = filterBy.pageIdx * PAGE_SIZE
-                const endIdx = startIdx + PAGE_SIZE
-                bugs = bugs.slice(startIdx, endIdx)
-            }
-            return bugs
-        })
 }
 
 function getById(bugId) {
