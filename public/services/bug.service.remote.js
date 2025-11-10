@@ -1,8 +1,7 @@
 import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
 
 const BASE_URL = '/api/bug'
-const STORAGE_KEY = 'bugs'
+const PAGE_SIZE = 4
 
 _createBugs()
 
@@ -27,6 +26,11 @@ function query(filterBy) {
                 bugs = bugs.filter(bug => bug.severity >= filterBy.minSeverity)
             }
 
+            if (filterBy.paginationOn) {
+                const startIdx = filterBy.pageIdx * PAGE_SIZE
+                const endIdx = startIdx + PAGE_SIZE
+                bugs = bugs.slice(startIdx, endIdx)
+            }
             return bugs
         })
 }
@@ -53,7 +57,7 @@ function save(bug) {
 }
 
 function _createBugs() {
-    let bugs = utilService.loadFromStorage(STORAGE_KEY)
+    let bugs = utilService.loadFromStorage(BASE_URL)
     if (bugs && bugs.length > 0) return
 
     bugs = [
@@ -78,9 +82,9 @@ function _createBugs() {
             _id: "G0053"
         }
     ]
-    utilService.saveToStorage(STORAGE_KEY, bugs)
+    utilService.saveToStorage(BASE_URL, bugs)
 }
 
 function getDefaultFilter() {
-    return { txt: '', minSeverity: 0 }
+    return { txt: '', minSeverity: 0, pageIdx: 0, paginationOn: true, labels: false }
 }
