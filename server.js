@@ -7,6 +7,8 @@ const app = express()
 app.use(express.static('public'))
 app.use(cookieParser())
 
+app.set('query parser', 'extended')
+
 app.get('/api/bug/save', (req, res) => {
     const { id: _id, title, description, severity, createdAt } = req.query
     const bug = { _id, title, description, severity: +severity, createdAt: +createdAt }
@@ -32,6 +34,11 @@ const filterBy = {
 })
 
 app.get('/api/bug/:bugId', (req, res) => {
+    const visitCount = req.cookies.visitCount || 0
+    res.cookie('visitCount', +visitCount + 1)
+    console.log('User visited at the following bugs: ');
+    
+
     const bugId = req.params.bugId
     bugService.getById(bugId)
         .then(bug => res.send(bug))
