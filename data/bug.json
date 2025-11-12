@@ -1,16 +1,9 @@
 [
   {
-    "_id": "zawUB",
-    "title": "Bug 48",
-    "description": "undefined",
-    "severity": 2,
-    "createdAt": null
-  },
-  {
     "_id": "cBz2h",
     "title": "Bug 17",
     "description": "undefined",
-    "severity": 1,
+    "severity": 3,
     "createdAt": null
   },
   {
@@ -18,13 +11,6 @@
     "title": "Bug 19",
     "description": "undefined",
     "severity": 4,
-    "createdAt": null
-  },
-  {
-    "_id": "jmRor",
-    "title": "Bug 73",
-    "description": "undefined",
-    "severity": 5,
     "createdAt": null
   },
   {
@@ -47,5 +33,15 @@
     "description": "undefined",
     "severity": 3,
     "createdAt": null
+  },
+  {
+    "title": "Bug 6673",
+    "severity": 3,
+    "_id": "TYNRS"
+  },
+  {
+    "title": "Bug 2613",
+    "severity": 3,
+    "_id": "S47sM"
   }
 ]

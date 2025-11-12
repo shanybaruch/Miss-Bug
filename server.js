@@ -6,12 +6,25 @@ import cookieParser from 'cookie-parser'
 const app = express()
 app.use(express.static('public'))
 app.use(cookieParser())
+app.use(express.json())
 
 app.set('query parser', 'extended')
 
-app.get('/api/bug/save', (req, res) => {
-    const { id: _id, title, description, severity, createdAt } = req.query
-    const bug = { _id, title, description, severity: +severity, createdAt: +createdAt }
+app.put('/api/bug/:bugId', (req, res) => {
+    const { _id, title, description, severity, createdAt } = req.body
+    const bug = { _id, title, description, severity, createdAt }
+
+    bugService.save(bug)
+        .then(bug => res.send(bug))
+        .catch(err => {
+            loggerService.error(err)
+            res.status(400).send(err)
+        })
+})
+
+app.post('/api/bug', (req, res) => {
+    const { title, description, severity, createdAt } = req.body
+    const bug = { title, description, severity, createdAt }
 
     bugService.save(bug)
         .then(bug => res.send(bug))
@@ -48,7 +61,7 @@ app.get('/api/bug/:bugId', (req, res) => {
         })
 })
 
-app.get('/api/bug/:bugId/remove', (req, res) => {
+app.delete('/api/bug/:bugId', (req, res) => {
     const bugId = req.params.bugId
     bugService.remove(bugId)
         .then(bugs => res.send(bugs))
@@ -57,7 +70,5 @@ app.get('/api/bug/:bugId/remove', (req, res) => {
             res.status(400).send(err)
         })
 })
-
-app.get('/', (req, res) => res.send('Hello'))
 
 app.listen(3030, () => loggerService.info('Server ready at port 3030'))
