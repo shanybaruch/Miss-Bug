@@ -1,49 +1,58 @@
 [
   {
-    "title": "Bug 513",
-    "description": "",
-    "severity": 4,
-    "labels": [],
-    "_id": "reaqS",
-    "createdAt": 1763226085525
-  },
-  {
-    "title": "Bug 870",
-    "description": "",
-    "severity": 2,
-    "labels": [],
-    "_id": "vLSNQ",
-    "createdAt": 1763224273857
-  },
-  {
-    "title": "Bug 345",
-    "description": "",
-    "severity": 6,
-    "labels": [],
-    "_id": "TUacn",
-    "createdAt": 1763224020336
-  },
-  {
-    "title": "Bug 890",
-    "description": "",
-    "severity": 1,
-    "labels": [],
-    "_id": "9Svl0",
-    "createdAt": 1763224013507
-  },
-  {
-    "title": "Bug 89",
-    "description": "",
+    "title": "Having a realy good day",
+    "description": "Things be going well!",
     "severity": 5,
     "labels": [],
-    "_id": "xDcaW",
-    "createdAt": 1763224006796
+    "_id": "YdgUz",
+    "createdAt": 1743092419531
   },
   {
-    "_id": "flWFG",
-    "title": "Bug 223",
-    "description": "",
+    "title": "Having a good day",
+    "description": "Things be going wrong!",
+    "severity": 4,
+    "labels": [],
+    "_id": "IdKdT",
+    "createdAt": 1743092370941
+  },
+  {
+    "title": "Cant save",
+    "description": "I'm am a description",
     "severity": 2,
-    "createdAt": 1763223946925
+    "labels": "['stuck']",
+    "_id": "asreW",
+    "createdAt": 1743087845061
+  },
+  {
+    "title": "Cant sell",
+    "description": "I'm am a description",
+    "severity": 4,
+    "labels": "['front', 'in progress']",
+    "_id": "c6BX0",
+    "createdAt": 1743087836528
+  },
+  {
+    "title": "Cant buy",
+    "description": "I'm am a description",
+    "severity": 5,
+    "labels": "['back', 'critical']",
+    "_id": "Yuxp9",
+    "createdAt": 1743087830036
+  },
+  {
+    "title": "Having a realy bad day",
+    "description": "Things be going wrong!",
+    "severity": 4,
+    "_id": "5VMXD",
+    "createdAt": 1743066297952,
+    "labels": "['back', 'fixed']"
+  },
+  {
+    "title": "Having a bad day",
+    "description": "Things be going wrong!",
+    "severity": 4,
+    "_id": "72yVP",
+    "createdAt": 1743066119008,
+    "labels": "['front', 'fixed']"
   }
 ]

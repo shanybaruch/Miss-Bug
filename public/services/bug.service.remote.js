@@ -41,28 +41,74 @@ function _createBugs() {
     let bugs = utilService.loadFromStorage(BASE_URL)
     if (bugs && bugs.length > 0) return
 
-    bugs = [
-        {
-            title: "Infinite Loop Detected",
-            severity: 4,
-            _id: "1NF1N1T3"
-        },
-        {
-            title: "Keyboard Not Found",
-            severity: 3,
-            _id: "K3YB0RD"
-        },
-        {
-            title: "404 Coffee Not Found",
-            severity: 2,
-            _id: "C0FF33"
-        },
-        {
-            title: "Unexpected Response",
-            severity: 1,
-            _id: "G0053"
-        }
-    ]
+    bugs =
+        [
+            {
+                "title": "Having a realy good day",
+                "description": "Things be going well!",
+                "severity": 5,
+                "labels": [],
+                "_id": "YdgUz",
+                "createdAt": 1743092419531
+            },
+            {
+                "title": "Having a good day",
+                "description": "Things be going wrong!",
+                "severity": 4,
+                "labels": [],
+                "_id": "IdKdT",
+                "createdAt": 1743092370941
+            },
+            {
+                "title": "Cant save",
+                "description": "I'm am a description",
+                "severity": 2,
+                "labels": "['stuck']",
+                "_id": "asreW",
+                "createdAt": 1743087845061
+            },
+            {
+                "title": "Cant sell",
+                "description": "I'm am a description",
+                "severity": 4,
+                "labels": "['front', 'in progress']",
+                "_id": "c6BX0",
+                "createdAt": 1743087836528
+            },
+            {
+                "title": "Cant buy",
+                "description": "I'm am a description",
+                "severity": 5,
+                "labels": "['back', 'critical']",
+                "_id": "Yuxp9",
+                "createdAt": 1743087830036
+            },
+            {
+                "title": "Having a realy bad day",
+                "description": "Things be going wrong!",
+                "severity": 4,
+                "_id": "5VMXD",
+                "createdAt": 1743066297952,
+                "labels": "['back', 'fixed']"
+            },
+            {
+                "title": "Having a bad day",
+                "description": "Things be going wrong!",
+                "severity": 4,
+                "_id": "72yVP",
+                "createdAt": 1743066119008,
+                "labels": "['front', 'fixed']"
+            },
+            {
+                "_id": "RJBVn",
+                "title": "shani",
+                "description": "shanbi",
+                "severity": 2,
+                "createdAt": 1694117417145,
+                "labels": "['front', 'critical']"
+            }
+        ]
+
     utilService.saveToStorage(BASE_URL, bugs)
 }
 
