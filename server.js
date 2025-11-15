@@ -24,14 +24,20 @@ app.put('/api/bug/:bugId', (req, res) => {
 })
 
 app.post('/api/bug', (req, res) => {
-    const { title, description, severity, createdAt } = req.body
-    const bug = { title, description, severity, createdAt }
+  	const bug = { 
+        title: req.body.title, 
+        description: req.body.description || '', 
+        severity: +req.body.severity, 
+        labels: req.body.labels || [], 
+    }
+
+    if (!bug.title || bug.severity === undefined) return res.status(400).send('Cannot add bug')
 
     bugService.save(bug)
         .then(bug => res.send(bug))
         .catch(err => {
-            loggerService.error(err)
-            res.status(400).send(err)
+            loggerService.error('Cannot save bug',err)
+            res.status(400).send('Cannot save bug')
         })
 })
 
@@ -40,7 +46,7 @@ app.get('/api/bug', (req, res) => {
 const filterBy = {
 		txt: req.query.txt || '',
 		minSeverity: +req.query.minSeverity || 0,
-		paginationOn: req.query.paginationOn === 'true',
+		paginationOn: req.query.paginationOn === 'false',
 		pageIdx: +req.query.pageIdx || 0,
 	}
     bugService.query(filterBy)

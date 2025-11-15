@@ -2,46 +2,44 @@
   {
     "_id": "cBz2h",
     "title": "Bug 17",
-    "description": "undefined",
+    "description": "",
     "severity": 3,
     "createdAt": null
   },
   {
     "_id": "30Kr6",
     "title": "Bug 19",
-    "description": "undefined",
+    "description": "",
     "severity": 4,
     "createdAt": null
   },
   {
     "_id": "sEniP",
     "title": "Bug 3",
-    "description": "undefined",
+    "description": "",
     "severity": 2,
     "createdAt": null
   },
   {
     "_id": "qeYGT",
     "title": "Bug 6",
-    "description": "undefined",
+    "description": "",
     "severity": 2,
     "createdAt": null
   },
   {
     "_id": "FazHD",
     "title": "Bug 65",
-    "description": "undefined",
+    "description": "",
     "severity": 3,
     "createdAt": null
   },
   {
-    "title": "Bug 6673",
+    "title": "Bug 94",
+    "description": "",
     "severity": 3,
-    "_id": "TYNRS"
-  },
-  {
-    "title": "Bug 2613",
-    "severity": 3,
-    "_id": "S47sM"
+    "labels": [],
+    "_id": "b5ui4",
+    "createdAt": "15.11.2025, 18:18:43"
   }
 ]

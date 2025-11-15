@@ -51,6 +51,7 @@ function save(bug) {
         bugs[idx] = bug
     } else {
         bug._id = makeId()
+        bug.createdAt = new Date().toLocaleString('he')
         bugs.push(bug)
     }
     return _saveBugs()
