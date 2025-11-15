@@ -1,4 +1,5 @@
 import express from 'express'
+import path from 'path'
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
 import cookieParser from 'cookie-parser'
@@ -47,17 +48,20 @@ const filterBy = {
 })
 
 app.get('/api/bug/:bugId', (req, res) => {
-    const visitCount = req.cookies.visitCount || 0
-    res.cookie('visitCount', +visitCount + 1)
-    console.log('User visited at the following bugs: ');
-    
+    const { bugId } = req.params
+    const { visitCount = [] } = req.cookies
+    console.log(`Bug visited`)
 
-    const bugId = req.params.bugId
+    if (!visitCount.includes(bugId)) visitCount.push(bugId)
+    if (visitCount.length > 3) return res.status(401).send('Wait! you have visited too many times.')
+
+    res.cookie('visitCount', visitCount, { maxAge: 1000 * 10 })
+
     bugService.getById(bugId)
         .then(bug => res.send(bug))
         .catch(err => {
-            loggerService.error(err)
-            res.status(400).send(err)
+            loggerService.error('Cannot get bug',err)
+            res.status(400).send('Cannot get bug')
         })
 })
 
@@ -69,6 +73,10 @@ app.delete('/api/bug/:bugId', (req, res) => {
             loggerService.error(err)
             res.status(400).send(err)
         })
+})
+
+app.get('/*all', (req, res) => {
+    res.sendFile(path.resolve('public/index.html'))
 })
 
 app.listen(3030, () => loggerService.info('Server ready at port 3030'))
