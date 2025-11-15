@@ -9,11 +9,12 @@ export const bugService = {
     getById,
     save,
     remove,
-    getDefaultFilter
+    getDefaultFilter,
+    getLabels
 }
 
-function query(filterBy) {
-    return axios.get(BASE_URL, { params: filterBy })
+function query(queryOptions) {
+    return axios.get(BASE_URL, { params: queryOptions })
         .then(res => res.data)
 }
 
@@ -66,5 +67,11 @@ function _createBugs() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', minSeverity: 0, pageIdx: 0, paginationOn: true, labels: false }
+    return { txt: '', minSeverity: 0, labels: [], sortField: '', sortDir: 1 }
+}
+
+function getLabels() {
+    return [
+        'back', 'front', 'critical', 'fixed', 'in progress', 'stuck'
+    ]
 }

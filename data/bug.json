@@ -1,45 +1,49 @@
 [
   {
-    "_id": "cBz2h",
-    "title": "Bug 17",
-    "description": "",
-    "severity": 3,
-    "createdAt": null
-  },
-  {
-    "_id": "30Kr6",
-    "title": "Bug 19",
+    "title": "Bug 513",
     "description": "",
     "severity": 4,
-    "createdAt": null
-  },
-  {
-    "_id": "sEniP",
-    "title": "Bug 3",
-    "description": "",
-    "severity": 2,
-    "createdAt": null
-  },
-  {
-    "_id": "qeYGT",
-    "title": "Bug 6",
-    "description": "",
-    "severity": 2,
-    "createdAt": null
-  },
-  {
-    "_id": "FazHD",
-    "title": "Bug 65",
-    "description": "",
-    "severity": 3,
-    "createdAt": null
-  },
-  {
-    "title": "Bug 94",
-    "description": "",
-    "severity": 3,
     "labels": [],
-    "_id": "b5ui4",
-    "createdAt": "15.11.2025, 18:18:43"
+    "_id": "reaqS",
+    "createdAt": 1763226085525
+  },
+  {
+    "title": "Bug 870",
+    "description": "",
+    "severity": 2,
+    "labels": [],
+    "_id": "vLSNQ",
+    "createdAt": 1763224273857
+  },
+  {
+    "title": "Bug 345",
+    "description": "",
+    "severity": 6,
+    "labels": [],
+    "_id": "TUacn",
+    "createdAt": 1763224020336
+  },
+  {
+    "title": "Bug 890",
+    "description": "",
+    "severity": 1,
+    "labels": [],
+    "_id": "9Svl0",
+    "createdAt": 1763224013507
+  },
+  {
+    "title": "Bug 89",
+    "description": "",
+    "severity": 5,
+    "labels": [],
+    "_id": "xDcaW",
+    "createdAt": 1763224006796
+  },
+  {
+    "_id": "flWFG",
+    "title": "Bug 223",
+    "description": "",
+    "severity": 2,
+    "createdAt": 1763223946925
   }
 ]
