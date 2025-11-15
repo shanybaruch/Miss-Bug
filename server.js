@@ -48,21 +48,20 @@ const filterBy = {
 })
 
 app.get('/api/bug/:bugId', (req, res) => {
-    const { bugId } = req.params
-    const { visitCount = [] } = req.cookies
-    console.log(`Bug visited`)
+	const { bugId } = req.params
+	const { visitBugIds = [] } = req.cookies
 
-    if (!visitCount.includes(bugId)) visitCount.push(bugId)
-    if (visitCount.length > 3) return res.status(401).send('Wait! you have visited too many times.')
+	if (!visitBugIds.includes(bugId)) visitBugIds.push(bugId)
+	if (visitBugIds.length > 3) return res.status(429).send('Wait for a bit')
 
-    res.cookie('visitCount', visitCount, { maxAge: 1000 * 10 })
-
-    bugService.getById(bugId)
-        .then(bug => res.send(bug))
-        .catch(err => {
-            loggerService.error('Cannot get bug',err)
-            res.status(400).send('Cannot get bug')
-        })
+	res.cookie('visitBugIds', visitBugIds, { maxAge: 1000 * 10 })
+    
+	bugService.getById(bugId)
+		.then(bug => res.send(bug))
+		.catch(err => {
+			loggerService.error('Cannot get bug', err)
+			res.status(400).send('Cannot get bug')
+		})
 })
 
 app.delete('/api/bug/:bugId', (req, res) => {
