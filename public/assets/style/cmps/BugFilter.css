@@ -5,9 +5,34 @@
 
 .bug-filter h2 {
     margin-bottom: .5em;
+    font-size: 1em;
 }
 
-.bug-filter label {
-    margin-inline-start: 1em;
+.bug-filter .filter-by {
+    display: flex;
+    align-items: center;
+    gap: .4em;
 }
 
+.sort-by {
+    display: flex;
+    align-items: center;
+    gap: 3em;
+    /* margin-block: .6em; */
+}
+
+.sort-field, .sort-dir {
+    display: flex;
+    align-items: center;
+    gap: .43em;
+}
+
+.sort-by, .filter-by {
+    border-block-end: 1px solid rgb(179, 179, 179);
+    padding-block: .4em;
+}
+
+:is(.sort-by, .filter-by) button {
+    margin-inline-start: auto;
+    font-size: 0.7em;
+}

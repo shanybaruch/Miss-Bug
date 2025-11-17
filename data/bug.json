@@ -1,65 +1,58 @@
 [
   {
-    "_id": "zawUB",
-    "title": "Bug 48",
-    "description": "undefined",
-    "severity": 2,
-    "createdAt": null
-  },
-  {
-    "_id": "cBz2h",
-    "title": "Bug 17",
-    "description": "undefined",
-    "severity": 1,
-    "createdAt": null
-  },
-  {
-    "_id": "30Kr6",
-    "title": "Bug 19",
-    "description": "undefined",
-    "severity": 4,
-    "createdAt": null
-  },
-  {
-    "_id": "jmRor",
-    "title": "Bug 73",
-    "description": "undefined",
+    "title": "Having a realy good day",
+    "description": "Things be going well!",
     "severity": 5,
-    "createdAt": null
+    "labels": [],
+    "_id": "YdgUz",
+    "createdAt": 1743092419531
   },
   {
-    "_id": "sEniP",
-    "title": "Bug 3",
-    "description": "undefined",
+    "title": "Having a good day",
+    "description": "Things be going wrong!",
+    "severity": 4,
+    "labels": [],
+    "_id": "IdKdT",
+    "createdAt": 1743092370941
+  },
+  {
+    "title": "Cant save",
+    "description": "I'm am a description",
     "severity": 2,
-    "createdAt": null
+    "labels": "['stuck']",
+    "_id": "asreW",
+    "createdAt": 1743087845061
   },
   {
-    "_id": "qeYGT",
-    "title": "Bug 6",
-    "description": "undefined",
-    "severity": 2,
-    "createdAt": null
+    "title": "Cant sell",
+    "description": "I'm am a description",
+    "severity": 4,
+    "labels": "['front', 'in progress']",
+    "_id": "c6BX0",
+    "createdAt": 1743087836528
   },
   {
-    "_id": "FazHD",
-    "title": "Bug 65",
-    "description": "undefined",
-    "severity": 3,
-    "createdAt": null
+    "title": "Cant buy",
+    "description": "I'm am a description",
+    "severity": 5,
+    "labels": "['back', 'critical']",
+    "_id": "Yuxp9",
+    "createdAt": 1743087830036
   },
   {
-    "_id": "xXcwa",
-    "title": "Bug 1763384449497",
-    "description": "undefined",
-    "severity": 3,
-    "createdAt": null
+    "title": "Having a realy bad day",
+    "description": "Things be going wrong!",
+    "severity": 4,
+    "_id": "5VMXD",
+    "createdAt": 1743066297952,
+    "labels": "['back', 'fixed']"
   },
   {
-    "_id": "AsngF",
-    "title": "null",
-    "description": "undefined",
-    "severity": 0,
-    "createdAt": null
+    "title": "Having a bad day",
+    "description": "Things be going wrong!",
+    "severity": 4,
+    "_id": "72yVP",
+    "createdAt": 1743066119008,
+    "labels": "['front', 'fixed']"
   }
 ]

@@ -1,12 +1,24 @@
-.bug-details h5 {
-    margin: 1em 0;
-    font-size: 1.1em;
+.bug-details {
+    .title {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    p {
+        margin: .1em 0;
+    }
+    
+    .severity {
+        margin: .5em 0;
+    
+        span {
+            color: red;
+        }
+    }
+    
+    hr {
+        margin: 1em 0;
+        color: gray;
+    }
 }
 
-.bug-details h5 span{
-    color: red;
-}
-
-.bug-details hr {
-    margin: 1em 0;
-}
