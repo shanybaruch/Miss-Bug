@@ -1,8 +1,11 @@
 import express from 'express'
 import path from 'path'
+import cookieParser from 'cookie-parser'
+
 import { bugService } from './services/bug.service.js'
 import { loggerService } from './services/logger.service.js'
-import cookieParser from 'cookie-parser'
+import { authService } from './services/auth.service.js'
+import { userService } from './services/user.service.js'
 
 const app = express()
 app.use(express.static('public'))
@@ -32,6 +35,9 @@ app.put('/api/bug/:bugId', (req, res) => {
 })
 
 app.post('/api/bug', (req, res) => {
+    const loggedinUser = authService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send('Cannot add bug')
+
     const bug = {
         title: req.body.title,
         description: req.body.description || '',
@@ -41,7 +47,7 @@ app.post('/api/bug', (req, res) => {
 
     if (!bug.title || bug.severity === undefined) return res.status(400).send('Cannot add bug')
 
-    bugService.save(bug)
+    bugService.save(bug, loggedinUser)
         .then(bug => res.send(bug))
         .catch(err => {
             loggerService.error('Cannot save bug', err)
@@ -50,12 +56,11 @@ app.post('/api/bug', (req, res) => {
 })
 
 app.get('/api/bug', (req, res) => {
-    const queryOptions = parseQueryParams(req.query)
+    // const queryOptions = parseQueryParams(req.query)
 
-	bugService.query(queryOptions)
-		.then(bugs => {
-			res.send(bugs)
-		})
+	// bugService.query(queryOptions)
+    userService.query()
+		.then(bugs => res.send(bugs))
 		.catch(err => {
 			loggerService.error('Cannot get bugs', err)
 			res.status(400).send('Cannot get bugs')
@@ -84,14 +89,14 @@ function parseQueryParams(queryParams) {
 
 app.get('/api/bug/:bugId', (req, res) => {
     const { bugId } = req.params
-    const { visitBugIds = [] } = req.cookies
+    // const { visitBugIds = [] } = req.cookies
 
-    if (!visitBugIds.includes(bugId)) visitBugIds.push(bugId)
-    if (visitBugIds.length > 3) return res.status(429).send('Wait for a bit')
+    // if (!visitBugIds.includes(bugId)) visitBugIds.push(bugId)
+    // if (visitBugIds.length > 3) return res.status(429).send('Wait for a bit')
 
-    res.cookie('visitBugIds', visitBugIds, { maxAge: 1000 * 10 })
+    // res.cookie('visitBugIds', visitBugIds, { maxAge: 1000 * 10 })
 
-    bugService.getById(bugId)
+    userService.getById(bugId)
         .then(bug => res.send(bug))
         .catch(err => {
             loggerService.error('Cannot get bug', err)
@@ -107,6 +112,40 @@ app.delete('/api/bug/:bugId', (req, res) => {
             loggerService.error(err)
             res.status(400).send(err)
         })
+})
+
+//* Auth API
+app.post('/api/auth/login', (req, res) => {
+    const { username, password } = req.body
+    authService.checkLogin({ username, password })
+        .then(user => {
+            const loginToken = authService.getLoginToken(user)
+            res.cookie('loginToken', loginToken)
+            res.send(user)
+        })
+        .catch(err => {
+            loggerService.error('Cannot signup', err)
+            res.status(404).send('Invalid Credentials')
+        })
+})
+
+app.post('/api/auth/signup', (req, res) => {
+    const { username, password, fullname } = req.body
+    userService.add({ username, password, fullname })
+        .then(user => {
+            const loginToken = authService.getLoginToken(user)
+            res.cookie('loginToken', loginToken)
+            res.send(user)
+        })
+        .catch(err => {
+            loggerService.error('Cannot signup', err)
+            res.status(400).send('Cannot signup')
+        })
+})
+
+app.post('/api/auth/logout', (req, res) => {
+    res.clearCookie('loginToken')
+    res.send('logged-out!')
 })
 
 app.get('/*all', (req, res) => {

@@ -5,7 +5,12 @@
     "severity": 5,
     "labels": [],
     "_id": "YdgUz",
-    "createdAt": 1743092419531
+    "createdAt": 1743092419531,
+    "owner": {
+      "_id": "u10000",
+      "fullname": "Admin Adminov",
+      "isAdmin": true
+    }
   },
   {
     "title": "Having a good day",
@@ -13,7 +18,11 @@
     "severity": 4,
     "labels": [],
     "_id": "IdKdT",
-    "createdAt": 1743092370941
+    "createdAt": 1743092370941,
+    "owner": {
+      "_id": "u102",
+      "fullname": "Nina Si"
+    }
   },
   {
     "title": "Cant save",
@@ -21,7 +30,11 @@
     "severity": 2,
     "labels": "['stuck']",
     "_id": "asreW",
-    "createdAt": 1743087845061
+    "createdAt": 1743087845061,
+    "owner": {
+      "_id": "tl3ps",
+      "fullname": "Popo Po"
+    }
   },
   {
     "title": "Cant sell",
@@ -29,7 +42,11 @@
     "severity": 4,
     "labels": "['front', 'in progress']",
     "_id": "c6BX0",
-    "createdAt": 1743087836528
+    "createdAt": 1743087836528,
+    "owner": {
+      "_id": "6iykr",
+      "fullname": "Kiki Ki"
+    }
   },
   {
     "title": "Cant buy",
@@ -37,7 +54,11 @@
     "severity": 5,
     "labels": "['back', 'critical']",
     "_id": "Yuxp9",
-    "createdAt": 1743087830036
+    "createdAt": 1743087830036,
+    "owner": {
+      "_id": "GOtHH",
+      "fullname": "Boby Bob"
+    }
   },
   {
     "title": "Having a realy bad day",
@@ -45,7 +66,11 @@
     "severity": 4,
     "_id": "5VMXD",
     "createdAt": 1743066297952,
-    "labels": "['back', 'fixed']"
+    "labels": "['back', 'fixed']",
+    "owner": {
+      "_id": "u111",
+      "fullname": "Puki Ja"
+    }
   },
   {
     "title": "Having a bad day",
@@ -53,6 +78,10 @@
     "severity": 4,
     "_id": "72yVP",
     "createdAt": 1743066119008,
-    "labels": "['front', 'fixed']"
+    "labels": "['front', 'fixed']",
+    "owner": {
+      "_id": "2XtHv",
+      "fullname": "Lala li"
+    }
   }
 ]

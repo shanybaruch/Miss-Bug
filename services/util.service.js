@@ -1,8 +1,14 @@
 import fs from 'fs'
 import fr from 'follow-redirects'
-
 const { http, https } = fr
 
+export const utilService = {
+    readJsonFile,
+    download,
+    writeJsonFile,
+    httpGet,
+    makeId
+}
 
 export function readJsonFile(path) {
     const str = fs.readFileSync(path, 'utf8')
