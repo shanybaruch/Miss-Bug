@@ -47,5 +47,19 @@
     "description": "undefined",
     "severity": 3,
     "createdAt": null
+  },
+  {
+    "_id": "xXcwa",
+    "title": "Bug 1763384449497",
+    "description": "undefined",
+    "severity": 3,
+    "createdAt": null
+  },
+  {
+    "_id": "AsngF",
+    "title": "null",
+    "description": "undefined",
+    "severity": 0,
+    "createdAt": null
   }
 ]
