@@ -15,7 +15,10 @@ app.use(express.json())
 app.set('query parser', 'extended')
 
 app.put('/api/bug/:bugId', (req, res) => {
-    const { title, description, severity, labels, _id } = req.body
+    const loggedinUser = authService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send('Cannot update bug')
+
+    const { title, description, severity, labels, _id, createdAt, owner} = req.body
 
     if (!_id || !title || severity === undefined) return res.status(400).send('Missing required fields')
     const bug = {
@@ -24,9 +27,14 @@ app.put('/api/bug/:bugId', (req, res) => {
         description,
         severity: +severity,
         labels: labels || [],
+        createdAt,
+        owner: {
+            _id: owner._id,
+            fullname: owner.fullname
+        }
     }
 
-    bugService.save(bug)
+    bugService.save(bug, loggedinUser)
         .then(savedBug => res.send(savedBug))
         .catch(err => {
             loggerService.error('Cannot save bug', err)
@@ -58,13 +66,13 @@ app.post('/api/bug', (req, res) => {
 app.get('/api/bug', (req, res) => {
     // const queryOptions = parseQueryParams(req.query)
 
-	// bugService.query(queryOptions)
+    // bugService.query(queryOptions)
     bugService.query()
-		.then(bugs => res.send(bugs))
-		.catch(err => {
-			loggerService.error('Cannot get bugs', err)
-			res.status(400).send('Cannot get bugs')
-		})
+        .then(bugs => res.send(bugs))
+        .catch(err => {
+            loggerService.error('Cannot get bugs', err)
+            res.status(400).send('Cannot get bugs')
+        })
 })
 
 function parseQueryParams(queryParams) {
@@ -78,7 +86,7 @@ function parseQueryParams(queryParams) {
         sortField: queryParams.sortField || '',
         sortDir: +queryParams.sortDir || 1,
     }
-    
+
     const pagination = {
         pageIdx: queryParams.pageIdx !== undefined ? +queryParams.pageIdx || 0 : queryParams.pageIdx,
         pageSize: +queryParams.pageSize || 3,

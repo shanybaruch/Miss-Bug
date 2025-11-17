@@ -82,8 +82,8 @@ export function LoginSignup({ setLoggedinUser }) {
             <div className="btns">
                 <a href="#" onClick={() => setIsSignUp(!isSignup)}>
                     {isSignup ?
-                        'Already a member? Login' :
-                        'New user? Signup here'
+                        'Login' :
+                        'Signup'
                     }
                 </a >
             </div>

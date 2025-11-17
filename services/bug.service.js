@@ -83,7 +83,7 @@ function save(bug, loggedinUser) {
         bug.createdAt = Date.now()
         console.log('loggedinUser:', loggedinUser)
         bug.owner = loggedinUser
-        bugs.unshift(bug)
+        bugs.push(bug)
     }
     return _saveBugs()
         .then(() => bug)

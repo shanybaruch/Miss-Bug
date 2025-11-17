@@ -26,6 +26,7 @@ export function BugDetails() {
                 <p className='description'>Description: <span>{bug.description || 'none'}</span></p>
                 <p className='createdat'>Created at: <span>{bug.createdAt}</span></p>
                 <p className='labels'>Labels: <span>{bug.labels}</span></p>
+                <p className='owner'>Owner: <span>{bug.owner.fullname}</span></p>
             </div>
         }
         <hr />

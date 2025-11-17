@@ -25,12 +25,11 @@ export function UserDetails() {
     function onBack() {
         navigate('/')
     }
-
     if (!user) return <div>Loading...</div>
 
     return (
         <section className="user-details">
-            <h1>User {user.fullname}</h1>
+            <h1 className="title">User {}</h1>
             {/* <pre>
                 {JSON.stringify(user, null, 2)}
             </pre> */}

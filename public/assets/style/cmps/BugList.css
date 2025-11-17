@@ -12,9 +12,9 @@
     flex-direction: column;
     gap: 1em;
 
-    padding: .7em;
+    padding: 1.2em;
     background-color: var(--bg1);
-    border-radius: .2em;
+    border-radius: .6em;
 
     color: whitesmoke;
 }
@@ -22,6 +22,11 @@
 .bug-list .actions {
     display: flex;
     gap: .3em;
+
+    button {
+        border-radius: .6em;
+
+    }
 }
 
 .bug-list .actions button:last-child {

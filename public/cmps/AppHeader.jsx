@@ -23,7 +23,7 @@ export function AppHeader({ loggedinUser, setLoggedinUser }) {
 
     return (
         <header className="app-header main-content single-row">
-            <h1>Miss Bug</h1>
+            <h1 className='title'>Miss Bug</h1>
             <nav>
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/bug">Bugs</NavLink>

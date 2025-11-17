@@ -1,17 +1,15 @@
-.about-us {
+.user-details {
     max-width: 900px;
     margin: auto;
-    
-    div {
-        .bug-img {
-            max-height: 40vh;
-        }
-    }
 
     .title {
         margin-block-start: .5rem;
         margin-block-end: 1rem;
         text-align: center;
         font-size: 2em;
+    }
+
+    button {
+        margin-block: 1rem;
     }
 }
