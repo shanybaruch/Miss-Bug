@@ -59,7 +59,7 @@ app.get('/api/bug', (req, res) => {
     // const queryOptions = parseQueryParams(req.query)
 
 	// bugService.query(queryOptions)
-    userService.query()
+    bugService.query()
 		.then(bugs => res.send(bugs))
 		.catch(err => {
 			loggerService.error('Cannot get bugs', err)
@@ -96,7 +96,7 @@ app.get('/api/bug/:bugId', (req, res) => {
 
     // res.cookie('visitBugIds', visitBugIds, { maxAge: 1000 * 10 })
 
-    userService.getById(bugId)
+    bugService.getById(bugId)
         .then(bug => res.send(bug))
         .catch(err => {
             loggerService.error('Cannot get bug', err)

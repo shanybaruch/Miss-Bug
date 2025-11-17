@@ -7,7 +7,9 @@ import { BugList } from '../cmps/BugList.jsx'
 import { debounce } from '../services/util.service.js'
 
 export function BugIndex() {
+    
     const [bugs, setBugs] = useState(null)
+    // console.log('bugs: ', bugs);
     const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
     const debouncedOnSetFilterBy = useRef(debounce(onSetFilterBy, 500)).current    
 

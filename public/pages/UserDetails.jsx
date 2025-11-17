@@ -31,9 +31,9 @@ export function UserDetails() {
     return (
         <section className="user-details">
             <h1>User {user.fullname}</h1>
-            <pre>
+            {/* <pre>
                 {JSON.stringify(user, null, 2)}
-            </pre>
+            </pre> */}
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim rem accusantium, itaque ut voluptates quo? Vitae animi maiores nisi, assumenda molestias odit provident quaerat accusamus, reprehenderit impedit, possimus est ad?</p>
             <button onClick={onBack} >Back</button>
         </section>

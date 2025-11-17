@@ -2,7 +2,7 @@ import { utilService } from './util.service.js'
 
 const BASE_URL = '/api/bug'
 
-_createBugs()
+// _createBugs()
 
 export const bugService = {
     query,

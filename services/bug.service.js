@@ -10,7 +10,7 @@ export const bugService = {
 const bugs = readJsonFile('./data/bug.json')
 const PAGE_SIZE = 4
 
-function query({ filterBy, sortBy, pagination }) {
+function query({ filterBy = {}, sortBy = {}, pagination = {} } = {}) {
     var bugsToReturn = [...bugs]
 
     if (filterBy.txt) {
@@ -59,7 +59,7 @@ function getById(bugId) {
 function remove(bugId, loggedinUser) {
     const idx = bugs.findIndex(bug => bug._id === bugId)
     if (idx === -1) return Promise.reject('Bug not found')
-   
+
     if (!loggedinUser.isAdmin &&
         bugs[idx].owner._id !== loggedinUser._id) {
         return Promise.reject(`Not your bug`)
@@ -70,12 +70,14 @@ function remove(bugId, loggedinUser) {
 
 function save(bug, loggedinUser) {
     if (bug._id) {
-        const bugToUpdate = bugs.findIndex(b => b._id === bug._id)
+        const bugIdx = bugs.findIndex(b => b._id === bug._id)
+        const bugToUpdate = bugs[bugIdx]
+
         if (!loggedinUser.isAdmin &&
             bugToUpdate.owner._id !== loggedinUser._id) {
             return Promise.reject(`Not your bug`)
         }
-        bugs[bugToUpdate] = { ...bugs[bugToUpdate], ...bug }
+        bugs[bugIdx] = { ...bugToUpdate, ...bug }
     } else {
         bug._id = makeId()
         bug.createdAt = Date.now()
