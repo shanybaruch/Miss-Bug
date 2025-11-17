@@ -16,15 +16,16 @@ export function BugDetails() {
     }, [])
 
     return <div className="bug-details">
-        <h3>Bug Details</h3>
+        {/* <h3>Bug Details</h3> */}
         {!bug && <p className="loading">Loading....</p>}
         {
             bug && 
             <div>
-                <h4>{bug.title}</h4>
-                <h5>Severity: <span>{bug.severity}</span></h5>
-                <p>Description: <span>{bug.description}</span></p>
-                {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam esse facilis vitae numquam architecto mollitia fugiat culpa minima aperiam amet sapiente, voluptate sit, in nemo ea. Expedita iure tempore explicabo?</p> */}
+                <h3 className='title'>{bug.title}</h3>
+                <p className='severity'>Severity: <span>{bug.severity}</span></p>
+                <p className='description'>Description: <span>{bug.description || 'none'}</span></p>
+                <p className='createdat'>Created at: <span>{bug.createdAt}</span></p>
+                <p className='labels'>Labels: <span>{bug.labels}</span></p>
             </div>
         }
         <hr />
