@@ -33,7 +33,7 @@ export function AppHeader({ loggedinUser, setLoggedinUser }) {
                         ? <NavLink to="/auth" >Login</NavLink>
                         : <div className="user">
                             <Link to={`/user/${loggedinUser._id}`}>{loggedinUser.fullname}</Link>
-                            <button onClick={onLogout}>logout</button>
+                            <button className='btn-logout' onClick={onLogout}>Logout</button>
                         </div>
                 }
             </nav>
