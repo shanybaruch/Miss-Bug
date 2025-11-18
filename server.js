@@ -64,10 +64,9 @@ app.post('/api/bug', (req, res) => {
 })
 
 app.get('/api/bug', (req, res) => {
-    // const queryOptions = parseQueryParams(req.query)
+    const queryOptions = parseQueryParams(req.query)
 
-    // bugService.query(queryOptions)
-    bugService.query()
+    bugService.query(queryOptions)
         .then(bugs => res.send(bugs))
         .catch(err => {
             loggerService.error('Cannot get bugs', err)

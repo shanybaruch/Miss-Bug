@@ -2,8 +2,7 @@ label.tag {
     padding: .2em .4em;
     border-radius: .2em;
     margin: 0;
-
-    font-size: .85em;
+    font-size: .8rem;
     cursor: pointer;
 }
 

@@ -4,12 +4,12 @@ import { authService } from "../services/auth.service.js";
 import { BugPreview } from './BugPreview.jsx'
 
 export function BugList({ bugs, onRemoveBug, onEditBug }) {
-    // console.log('bugs: ',bugs);
 
     function isAuthorized(bug) {
         const user = authService.getLoggedinUser()
         if (!user) return false
-return user.isAdmin || (bug.owner && user._id === bug.owner._id)    }
+        return user.isAdmin || (bug.owner && user._id === bug.owner._id)
+    }
 
     if (!bugs) return <div>Loading...</div>
     return <ul className="bug-list">

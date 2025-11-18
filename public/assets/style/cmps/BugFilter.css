@@ -1,24 +1,26 @@
 .bug-filter {
     background-color: var(--gray2);
-    padding: 1em;
+    padding-inline: .8em;
+    padding-block: .8em;
+    padding-bottom: .4em;
 }
 
 .bug-filter h2 {
-    margin-bottom: .5em;
     font-size: 1em;
+    text-align: center;
 }
 
 .bug-filter .filter-by {
     display: flex;
     align-items: center;
-    gap: .4em;
+    /* gap: .4em; */
+    padding: 0;
 }
 
 .sort-by {
     display: flex;
     align-items: center;
-    gap: 3em;
-    /* margin-block: .6em; */
+    gap: 2em;
 }
 
 .sort-field, .sort-dir {
@@ -35,4 +37,5 @@
 :is(.sort-by, .filter-by) button {
     margin-inline-start: auto;
     font-size: 0.7em;
+    width: max-content;
 }

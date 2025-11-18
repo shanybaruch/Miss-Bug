@@ -5,6 +5,7 @@
 
     padding: 0;
     list-style: none;
+    margin-top: 0;
 }
 
 .bug-list li {
@@ -14,7 +15,7 @@
 
     padding: 1.2em;
     background-color: var(--bg1);
-    border-radius: .6em;
+    border-radius: .4em;
 
     color: whitesmoke;
 }
