@@ -3,6 +3,14 @@
     align-items: center;
     justify-content: space-between;
 
-    padding-block: 1em;
+    padding-block: .5em;
     /* border-block-end: 1px solid lightgray; */
+}
+button {
+    opacity: 1;
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: auto;
 }

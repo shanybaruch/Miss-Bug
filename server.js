@@ -14,6 +14,8 @@ app.use(express.json())
 
 app.set('query parser', 'extended')
 
+const PAGE_SIZE = 4
+
 app.put('/api/bug/:bugId', (req, res) => {
     const loggedinUser = authService.validateToken(req.cookies.loginToken)
     if (!loggedinUser) return res.status(401).send('Cannot update bug')
@@ -88,7 +90,7 @@ function parseQueryParams(queryParams) {
 
     const pagination = {
         pageIdx: queryParams.pageIdx !== undefined ? +queryParams.pageIdx || 0 : queryParams.pageIdx,
-        pageSize: +queryParams.pageSize || 3,
+        pageSize: +queryParams.pageSize || PAGE_SIZE,
     }
 
     return { filterBy, sortBy, pagination }

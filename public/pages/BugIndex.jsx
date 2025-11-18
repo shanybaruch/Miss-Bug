@@ -6,12 +6,12 @@ import { BugFilter } from '../cmps/BugFilter.jsx'
 import { BugList } from '../cmps/BugList.jsx'
 import { debounce } from '../services/util.service.js'
 
+const PAGE_SIZE = 4
+
 export function BugIndex() {
-    
     const [bugs, setBugs] = useState(null)
-    // console.log('bugs: ', bugs);
     const [filterBy, setFilterBy] = useState(bugService.getDefaultFilter())
-    const debouncedOnSetFilterBy = useRef(debounce(onSetFilterBy, 500)).current    
+    const debouncedOnSetFilterBy = useRef(debounce(onSetFilterBy, 500)).current
 
     useEffect(loadBugs, [filterBy])
 
@@ -64,6 +64,25 @@ export function BugIndex() {
         setFilterBy(prevFilter => ({ ...prevFilter, ...filterBy }))
     }
 
+    function onChangePage(diff) {
+        if (filterBy.pageIdx === undefined) return
+        setFilterBy(prevFilter => {
+            let nextPageIdx = prevFilter.pageIdx + diff
+            if (nextPageIdx < 0) nextPageIdx = 0
+            return { ...prevFilter, pageIdx: nextPageIdx }
+        })
+    }
+
+    function onTogglePagination() {
+        setFilterBy(prevFilter => {
+            return {
+                ...prevFilter,
+                pageIdx: (prevFilter.pageIdx === undefined) ? 0 : undefined
+            }
+        })
+    }
+    console.log(filterBy)
+
     return <section className="bug-index main-content">
 
         <BugFilter filterBy={filterBy} onSetFilterBy={debouncedOnSetFilterBy} />
@@ -71,6 +90,18 @@ export function BugIndex() {
             <h3>Bug List</h3>
             <button onClick={onAddBug}>Add Bug</button>
         </header>
+
+        <section>
+            <button onClick={onTogglePagination}>
+{filterBy.pageIdx === undefined ? 'On Pagination' : 'Off Pagination'}                </button>
+            {filterBy.pageIdx !== undefined &&
+                <React.Fragment>
+                    <button disabled={filterBy.pageIdx === 0} onClick={() => onChangePage(-1)}>-</button>
+                    <span>{filterBy.pageIdx + 1}</span>
+                    <button disabled={bugs === null || bugs.length < PAGE_SIZE} onClick={() => onChangePage(1)}>+</button>
+                </React.Fragment>
+            }
+        </section>
 
         <BugList
             bugs={bugs}
