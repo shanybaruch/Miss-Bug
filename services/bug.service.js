@@ -81,7 +81,7 @@ function save(bug, loggedinUser) {
     } else {
         bug._id = makeId()
         bug.createdAt = Date.now()
-        console.log('loggedinUser:', loggedinUser)
+        // console.log('loggedinUser:', loggedinUser)
         bug.owner = loggedinUser
         bugs.push(bug)
     }

@@ -20,7 +20,7 @@ app.put('/api/bug/:bugId', (req, res) => {
     const loggedinUser = authService.validateToken(req.cookies.loginToken)
     if (!loggedinUser) return res.status(401).send('Cannot update bug')
 
-    const { title, description, severity, labels, _id, createdAt, owner} = req.body
+    const { title, description, severity, labels, _id, createdAt, owner } = req.body
 
     if (!_id || !title || severity === undefined) return res.status(400).send('Missing required fields')
     const bug = {
@@ -114,8 +114,11 @@ app.get('/api/bug/:bugId', (req, res) => {
 })
 
 app.delete('/api/bug/:bugId', (req, res) => {
+    const loggedinUser = authService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) return res.status(401).send('Cannot add bug')
+
     const bugId = req.params.bugId
-    bugService.remove(bugId)
+    bugService.remove(bugId, loggedinUser)
         .then(bugs => res.send(bugs))
         .catch(err => {
             loggerService.error(err)

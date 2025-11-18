@@ -47,7 +47,8 @@ export function BugIndex() {
 
     function onEditBug(bug) {
         const severity = +prompt('New severity?', bug.severity)
-        const bugToSave = { ...bug, severity }
+        const title = prompt('New title?', bug.title)        
+        const bugToSave = { ...bug, severity, title }
 
         bugService.save(bugToSave)
             .then(savedBug => {
@@ -81,7 +82,6 @@ export function BugIndex() {
             }
         })
     }
-    console.log(filterBy)
 
     return <section className="bug-index main-content">
 
@@ -93,7 +93,8 @@ export function BugIndex() {
 
         <section>
             <button onClick={onTogglePagination}>
-{filterBy.pageIdx === undefined ? 'On Pagination' : 'Off Pagination'}                </button>
+                {filterBy.pageIdx === undefined ? 'On Pagination' : 'Off Pagination'}
+            </button>
             {filterBy.pageIdx !== undefined &&
                 <React.Fragment>
                     <button disabled={filterBy.pageIdx === 0} onClick={() => onChangePage(-1)}>-</button>

@@ -1,8 +1,8 @@
 [
   {
-    "title": "Bug 154",
+    "title": "Bug 152",
     "description": "",
-    "severity": 6,
+    "severity": 2,
     "labels": [],
     "_id": "OkbTC",
     "createdAt": 1763408857948,
@@ -106,18 +106,6 @@
     "owner": {
       "_id": "2XtHv",
       "fullname": "Lala li"
-    }
-  },
-  {
-    "title": "Bug 471",
-    "description": "",
-    "severity": 2,
-    "labels": [],
-    "_id": "2sqRm",
-    "createdAt": 1763408893371,
-    "owner": {
-      "_id": "u102",
-      "fullname": "Nina Si"
     }
   }
 ]
