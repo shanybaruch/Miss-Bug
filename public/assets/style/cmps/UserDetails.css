@@ -9,6 +9,27 @@
         font-size: 2em;
     }
 
+    p {
+        font-weight: 900;
+
+        span {
+            color: var(--bg2);
+        }
+    }
+
+    ul {
+        list-style: disc;
+        font-weight: 100;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin-block: .3em;
+        padding-inline-start: .8em;
+    }
+
+    .user-bug-list {
+        font-size: .9rem;
+        cursor: pointer;
+    }
+
     button {
         margin-block: 1rem;
     }

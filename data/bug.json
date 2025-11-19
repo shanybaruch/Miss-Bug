@@ -12,18 +12,6 @@
     }
   },
   {
-    "title": "Bug 631",
-    "description": "",
-    "severity": 0,
-    "labels": [],
-    "_id": "LQqWS",
-    "createdAt": 1763407771122,
-    "owner": {
-      "_id": "juDiF",
-      "fullname": "Sasa So"
-    }
-  },
-  {
     "title": "Having a realy good day",
     "description": "Things be going well!",
     "severity": 5,
@@ -52,7 +40,9 @@
     "title": "Cant save",
     "description": "I'm am a description",
     "severity": 2,
-    "labels": "['stuck']",
+    "labels": [
+      "stuck"
+    ],
     "_id": "asreW",
     "createdAt": 1743087845061,
     "owner": {
@@ -64,7 +54,10 @@
     "title": "Cant sell",
     "description": "I'm am a description",
     "severity": 4,
-    "labels": "['front', 'in progress']",
+    "labels": [
+      "front",
+      "in progress"
+    ],
     "_id": "c6BX0",
     "createdAt": 1743087836528,
     "owner": {
@@ -76,7 +69,10 @@
     "title": "Cant buy",
     "description": "I'm am a description",
     "severity": 5,
-    "labels": "['back', 'critical']",
+    "labels": [
+      "back",
+      "critical"
+    ],
     "_id": "Yuxp9",
     "createdAt": 1743087830036,
     "owner": {
@@ -90,7 +86,10 @@
     "severity": 4,
     "_id": "5VMXD",
     "createdAt": 1743066297952,
-    "labels": "['back', 'fixed']",
+    "labels": [
+      "back",
+      "fixed"
+    ],
     "owner": {
       "_id": "u111",
       "fullname": "Puki Ja"
@@ -102,10 +101,25 @@
     "severity": 4,
     "_id": "72yVP",
     "createdAt": 1743066119008,
-    "labels": "['front', 'fixed']",
+    "labels": [
+      "front",
+      "fixed"
+    ],
     "owner": {
       "_id": "2XtHv",
       "fullname": "Lala li"
+    }
+  },
+  {
+    "title": "Bug 417",
+    "description": "",
+    "severity": 3,
+    "labels": [],
+    "_id": "mej8P",
+    "createdAt": 1763555624501,
+    "owner": {
+      "_id": "juDiF",
+      "fullname": "Sasa So"
     }
   }
 ]

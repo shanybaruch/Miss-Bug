@@ -3,7 +3,6 @@ import { authService } from '../services/auth.service.js'
 const { Link, NavLink, useNavigate } = ReactRouterDOM
 
 export function AppHeader({ loggedinUser, setLoggedinUser }) {
-
     const navigate = useNavigate()
 
     function onLogout() {

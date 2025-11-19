@@ -67,12 +67,21 @@ app.post('/api/bug', (req, res) => {
 
 app.get('/api/bug', (req, res) => {
     const queryOptions = parseQueryParams(req.query)
-
     bugService.query(queryOptions)
         .then(bugs => res.send(bugs))
         .catch(err => {
             loggerService.error('Cannot get bugs', err)
             res.status(400).send('Cannot get bugs')
+        })
+})
+
+app.get('/api/user/:userId', (req, res) => {
+    const { userId } = req.params
+    userService.getById(userId)
+        .then(user => res.send(user))
+        .catch(err => {
+            loggerService.error('Cannot get user', err)
+            res.status(400).send('Cannot get user')
         })
 })
 
@@ -160,8 +169,9 @@ app.post('/api/auth/logout', (req, res) => {
     res.send('logged-out!')
 })
 
+
 app.get('/*all', (req, res) => {
     res.sendFile(path.resolve('public/index.html'))
 })
 
-app.listen(3030, () => loggerService.info('Server ready at port 3030'))
+app.listen(process.env.PORT || 3030, () => loggerService.info('Server ready at port 3030'))

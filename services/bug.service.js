@@ -12,7 +12,6 @@ const PAGE_SIZE = 4
 
 function query({ filterBy = {}, sortBy = {}, pagination = {} } = {}) {
     var bugsToReturn = [...bugs]
-
     if (filterBy.txt) {
         const regExp = new RegExp(filterBy.txt, 'i')
         bugsToReturn =
@@ -27,7 +26,7 @@ function query({ filterBy = {}, sortBy = {}, pagination = {} } = {}) {
     if (Array.isArray(filterBy.labels) && filterBy.labels.length > 0) {
         bugsToReturn =
             bugsToReturn.filter(bug =>
-                filterBy.labels.some(label => bug?.labels?.includes(label)))
+                filterBy.labels.some(label => bug.labels && bug.labels.includes(label)))
     }
 
     if (sortBy.sortField === 'severity' || sortBy.sortField === 'createdAt') {
