@@ -7,18 +7,39 @@
     p {
         margin: .1em 0;
     }
-    
+
     .severity {
         margin: .5em 0;
-    
+
         span {
             color: red;
         }
     }
-    
-    hr {
+
+    /* hr {
         margin: 1em 0;
         color: gray;
+    } */
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+
+        margin-block-start: 2em;
+        margin-block-end: .6em;
+
+        button {
+            border-radius: 2px;
+            /* background-color: transparent; */
+            padding-top: .2em;
+            padding-bottom: .3em;
+            padding-inline: .4em;
+            font-weight: 900;
+            font-size: 1rem;
+        }
+    }
+
+    a:hover {
+        text-decoration: none;
     }
 }
-

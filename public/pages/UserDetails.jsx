@@ -19,7 +19,6 @@ export function UserDetails() {
     function loadUser() {
         userService.getById(params.userId)
             .then(userFromService => {
-                // console.log('User object from service:', userFromService);
                 setUser(userFromService)
             }).catch(err => {
                 console.log('err:', err)

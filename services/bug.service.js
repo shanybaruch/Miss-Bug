@@ -50,8 +50,12 @@ function query({ filterBy = {}, sortBy = {}, pagination = {} } = {}) {
 }
 
 function getById(bugId) {
-    const bug = bugs.find(bug => bug._id === bugId)
-    if (!bug) return Promise.reject('Bug id not found')
+    const bugIdx = bugs.findIndex(bug => bug._id === bugId)
+    const nextBug = bugs[bugIdx + 1] ? bugs[bugIdx + 1] : bugs[0]
+    const prevBug = bugs[bugIdx - 1] ? bugs[bugIdx - 1] : bugs[bugs.length - 1]
+    const bug = bugs[bugIdx]
+    bug.nextBugId = nextBug._id
+    bug.prevBugId = prevBug._id
     return Promise.resolve(bug)
 }
 
