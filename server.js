@@ -7,6 +7,10 @@ import { loggerService } from './services/logger.service.js'
 import { authService } from './services/auth.service.js'
 import { userService } from './services/user.service.js'
 
+console.log('process.env.PORT:', process.env.PORT)
+console.log('process.env.NODE_ENV:', process.env.NODE_ENV)
+console.log('process.env.SECRET1:', process.env.SECRET1)
+
 const app = express()
 app.use(express.static('public'))
 app.use(cookieParser())
