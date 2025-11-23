@@ -12,20 +12,25 @@ export function BugList({ bugs, onRemoveBug, onEditBug }) {
     }
 
     if (!bugs) return <div>Loading...</div>
-    return <ul className="bug-list">
-        {bugs.map(bug => (
-            <li key={bug._id}>
-                <BugPreview bug={bug} />
-                <section className="actions">
-                    <button><Link to={`/bug/${bug._id}`}>Details</Link></button>
-                    {isAuthorized(bug) &&
-                        <React.Fragment>
-                            <button onClick={() => onEditBug(bug)}>Edit</button>
-                            <button onClick={() => onRemoveBug(bug._id)}>x</button>
-                        </React.Fragment>
-                    }
-                </section>
-            </li>
-        ))}
-    </ul >
+    return (
+        <section className="bug-list">
+            <ul className="list">
+                {bugs.map(bug => (
+                    <li key={bug._id}>
+                        <BugPreview bug={bug} />
+                        <section className="actions">
+                            <button><Link to={`/bug/${bug._id}`}>Details</Link></button>
+                            {isAuthorized(bug) &&
+                                <React.Fragment>
+                                    <button onClick={() => onEditBug(bug)}>Edit</button>
+                                    <button onClick={() => onRemoveBug(bug._id)}>x</button>
+                                </React.Fragment>
+                            }
+                        </section>
+                    </li>
+                ))}
+            </ul>
+            <p className="bugs-total">{bugs.length} bugs total</p>
+        </section >
+    )
 }
