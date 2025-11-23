@@ -51,51 +51,6 @@
     }
   },
   {
-    "title": "Cant sell",
-    "description": "I'm am a description",
-    "severity": 4,
-    "labels": [
-      "front",
-      "in progress"
-    ],
-    "_id": "c6BX0",
-    "createdAt": 1743087836528,
-    "owner": {
-      "_id": "6iykr",
-      "fullname": "Kiki Ki"
-    }
-  },
-  {
-    "title": "Cant buy",
-    "description": "I'm am a description",
-    "severity": 5,
-    "labels": [
-      "back",
-      "critical"
-    ],
-    "_id": "Yuxp9",
-    "createdAt": 1743087830036,
-    "owner": {
-      "_id": "GOtHH",
-      "fullname": "Boby Bob"
-    }
-  },
-  {
-    "title": "Having a realy bad day",
-    "description": "Things be going wrong!",
-    "severity": 4,
-    "_id": "5VMXD",
-    "createdAt": 1743066297952,
-    "labels": [
-      "back",
-      "fixed"
-    ],
-    "owner": {
-      "_id": "u111",
-      "fullname": "Puki Ja"
-    }
-  },
-  {
     "title": "Having a bad day",
     "description": "Things be going wrong!",
     "severity": 4,

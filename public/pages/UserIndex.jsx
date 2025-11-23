@@ -1,6 +1,7 @@
 const { useState, useEffect } = React
 const { useNavigate, Link } = ReactRouterDOM
 
+import { bugService } from '../services/bug.service.remote.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { userService } from "../services/user.service.js"
 
@@ -8,9 +9,11 @@ export function UserIndex() {
 
     const [users, setUsers] = useState(null)
     const navigate = useNavigate()
+    const [bugs, setBugs] = useState(null)
 
     useEffect(() => {
         loadUsers()
+        loadBugs()
     }, [])
 
     function loadUsers() {
@@ -30,6 +33,12 @@ export function UserIndex() {
     function getUsers() {
         if (!users) return []
         return users
+    }
+
+    function loadBugs() {
+        bugService.query()
+            .then(setBugs)
+            .catch(err => showErrorMsg(`Couldn't load bugs - ${err}`))
     }
 
     function onRemoveUser(userId) {
@@ -71,7 +80,12 @@ export function UserIndex() {
                                 <button onClick={(ev) => ev.stopPropagation()}><Link to={`/user/${user._id}`}>Details</Link></button>
                                 <button onClick={(ev) => {
                                     ev.stopPropagation()
-                                    onRemoveUser(user._id)
+                                    const userBugs = bugs ? bugs.filter(bug => bug.owner._id === user._id) : []
+                                    if (userBugs.length === 0) {
+                                        onRemoveUser(user._id)
+                                    } else {
+                                        showErrorMsg(`Cannot removed ${user.fullname}. his have ${userBugs.length} open bugs.`)
+                                    }
                                 }}>Remove</button>
                             </td>
                         </tr>
