@@ -13,7 +13,8 @@
 
     .btn-logout {
         /* background-color: var(--bg1); */
-        border: 1px solid var(--bg1);
+        /* border: 1px solid var(--bg1); */
+        color: var(--bg3);
         font-size: 1rem;
         font-weight: 900;
         margin-left: .5em;

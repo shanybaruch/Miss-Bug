@@ -33,7 +33,7 @@ export function UserDetails() {
     }
 
     function getBugs() {
-        console.log(bugs);
+        // console.log(bugs);
         if (!bugs) return []
 
         return bugs.filter(bug => {
@@ -42,7 +42,7 @@ export function UserDetails() {
     }
 
     function onBack() {
-        navigate('/')
+        navigate(-1)
     }
     if (!user) return <div>Loading...</div>
 
@@ -55,7 +55,10 @@ export function UserDetails() {
             <p>My Bugs <span>{getBugs().length}</span> total</p>
             <ul className="user-bug-list">
                 {getBugs().map(bug => (
-                    <li key={bug._id} onClick={() => navigate(`/bug/${bug._id}`)}>{bug.title}</li>
+                    <li key={bug._id}
+                        onClick={() => navigate(`/bug/${bug._id}`)}>
+                        {bug.title}
+                    </li>
                 ))}
             </ul>
             <button onClick={onBack} >Back</button>

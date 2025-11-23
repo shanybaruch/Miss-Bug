@@ -1,0 +1,14 @@
+.user-index {
+    .title {
+        margin: .4em auto;
+    }
+    .user-table {
+        margin: auto;
+        padding: 1em;
+
+        td {
+            padding-block: .4em;
+            padding-inline: 1em;
+        }
+    }
+}

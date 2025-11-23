@@ -20,6 +20,80 @@ app.set('query parser', 'extended')
 
 const PAGE_SIZE = 4
 
+app.get('/api/bug', (req, res) => {
+    const queryOptions = parseQueryParams(req.query)
+    bugService.query(queryOptions)
+        .then(bugs => res.send(bugs))
+        .catch(err => {
+            loggerService.error('Cannot get bugs', err)
+            res.status(400).send('Cannot get bugs')
+        })
+})
+
+app.get('/api/bug/:bugId', (req, res) => {
+    const { bugId } = req.params
+    // const { visitBugIds = [] } = req.cookies
+
+    // if (!visitBugIds.includes(bugId)) visitBugIds.push(bugId)
+    // if (visitBugIds.length > 3) return res.status(429).send('Wait for a bit')
+
+    // res.cookie('visitBugIds', visitBugIds, { maxAge: 1000 * 10 })
+
+    bugService.getById(bugId)
+        .then(bug => res.send(bug))
+        .catch(err => {
+            loggerService.error('Cannot get bug', err)
+            res.status(400).send('Cannot get bug')
+        })
+})
+
+app.get('/api/user', (req, res) => {
+    userService.query()
+        .then(users => res.send(users))
+        .catch(err => {
+            loggerService.error('Cannot get users', err)
+            res.status(500).send('Cannot get users')
+        })
+})
+
+app.get('/api/user/:userId', (req, res) => {
+    const { userId } = req.params
+    userService.getById(userId)
+        .then(user => res.send(user))
+        .catch(err => {
+            loggerService.error('Cannot get user', err)
+            res.status(400).send('Cannot get user')
+        })
+})
+
+app.delete('/api/user/:userId', (req, res) => {
+    const loggedinUser = authService.validateToken(req.cookies.loginToken)
+    if (!loggedinUser) {
+        return res.status(401).send('Unauthorized to delete user')
+    }
+    const { userId } = req.params
+    const isAdmin = loggedinUser.isAdmin || loggedinUser.role === 'admin'
+    const isSelf = loggedinUser._id === userId
+
+    if (!isAdmin && !isSelf) {
+        return res.status(403).send('Forbidden: Only admins or the user themselves can delete this account')
+    }
+
+    userService.remove(userId)
+        .then(() => {
+            loggerService.info(`User ${userId} deleted by user ${loggedinUser._id}`)
+           
+            if (isSelf) {
+                res.clearCookie('loginToken')
+            }
+            res.send({ msg: 'User removed successfully' })
+        })
+        .catch(err => {
+            loggerService.error('Cannot remove user ' + userId, err)
+            res.status(400).send('Cannot remove user')
+        })
+})
+
 app.put('/api/bug/:bugId', (req, res) => {
     const loggedinUser = authService.validateToken(req.cookies.loginToken)
     if (!loggedinUser) return res.status(401).send('Cannot update bug')
@@ -66,63 +140,6 @@ app.post('/api/bug', (req, res) => {
         .catch(err => {
             loggerService.error('Cannot save bug', err)
             res.status(400).send('Cannot save bug')
-        })
-})
-
-app.get('/api/bug', (req, res) => {
-    const queryOptions = parseQueryParams(req.query)
-    bugService.query(queryOptions)
-        .then(bugs => res.send(bugs))
-        .catch(err => {
-            loggerService.error('Cannot get bugs', err)
-            res.status(400).send('Cannot get bugs')
-        })
-})
-
-app.get('/api/user/:userId', (req, res) => {
-    const { userId } = req.params
-    userService.getById(userId)
-        .then(user => res.send(user))
-        .catch(err => {
-            loggerService.error('Cannot get user', err)
-            res.status(400).send('Cannot get user')
-        })
-})
-
-function parseQueryParams(queryParams) {
-    const filterBy = {
-        txt: queryParams.txt || '',
-        minSeverity: +queryParams.minSeverity || 0,
-        labels: queryParams.labels || [],
-    }
-
-    const sortBy = {
-        sortField: queryParams.sortField || '',
-        sortDir: +queryParams.sortDir || 1,
-    }
-
-    const pagination = {
-        pageIdx: queryParams.pageIdx !== undefined ? +queryParams.pageIdx || 0 : queryParams.pageIdx,
-        pageSize: +queryParams.pageSize || PAGE_SIZE,
-    }
-
-    return { filterBy, sortBy, pagination }
-}
-
-app.get('/api/bug/:bugId', (req, res) => {
-    const { bugId } = req.params
-    // const { visitBugIds = [] } = req.cookies
-
-    // if (!visitBugIds.includes(bugId)) visitBugIds.push(bugId)
-    // if (visitBugIds.length > 3) return res.status(429).send('Wait for a bit')
-
-    // res.cookie('visitBugIds', visitBugIds, { maxAge: 1000 * 10 })
-
-    bugService.getById(bugId)
-        .then(bug => res.send(bug))
-        .catch(err => {
-            loggerService.error('Cannot get bug', err)
-            res.status(400).send('Cannot get bug')
         })
 })
 
@@ -173,6 +190,25 @@ app.post('/api/auth/logout', (req, res) => {
     res.send('logged-out!')
 })
 
+function parseQueryParams(queryParams) {
+    const filterBy = {
+        txt: queryParams.txt || '',
+        minSeverity: +queryParams.minSeverity || 0,
+        labels: queryParams.labels || [],
+    }
+
+    const sortBy = {
+        sortField: queryParams.sortField || '',
+        sortDir: +queryParams.sortDir || 1,
+    }
+
+    const pagination = {
+        pageIdx: queryParams.pageIdx !== undefined ? +queryParams.pageIdx || 0 : queryParams.pageIdx,
+        pageSize: +queryParams.pageSize || PAGE_SIZE,
+    }
+
+    return { filterBy, sortBy, pagination }
+}
 
 app.get('/*all', (req, res) => {
     res.sendFile(path.resolve('public/index.html'))

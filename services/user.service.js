@@ -1,7 +1,7 @@
 import fs from 'fs'
 import { utilService } from './util.service.js'
 
-const users = utilService.readJsonFile('data/user.json')
+let users = utilService.readJsonFile('data/user.json')
 
 export const userService = {
     query,

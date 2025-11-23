@@ -22,25 +22,11 @@
         "_id": "tl3ps"
     },
     {
-        "username": "kiki",
-        "password": "kiki",
-        "fullname": "Kiki Ki",
-        "score": 100,
-        "_id": "6iykr"
-    },
-    {
         "username": "bob",
         "password": "bob",
         "fullname": "Boby Bob",
         "score": 100,
         "_id": "GOtHH"
-    },
-    {
-        "_id": "u111",
-        "username": "puki",
-        "fullname": "Puki Ja",
-        "password": "puki",
-        "score": 100
     },
     {
         "username": "lala",

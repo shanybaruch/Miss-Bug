@@ -20,6 +20,11 @@ export function AppHeader({ loggedinUser, setLoggedinUser }) {
         navigate(-1)
     }
 
+    function isAdmin() {
+        const user = authService.getLoggedinUser()
+        return user && user.isAdmin
+    }
+
     return (
         <header className="app-header main-content single-row">
             <h1 className='title'>Miss Bug</h1>
@@ -27,6 +32,9 @@ export function AppHeader({ loggedinUser, setLoggedinUser }) {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/bug">Bugs</NavLink>
                 <NavLink to="/about">About</NavLink>
+                {isAdmin() &&
+                    <NavLink to="/admin">Users</NavLink>
+                }
                 {
                     !loggedinUser
                         ? <NavLink to="/auth" >Login</NavLink>
